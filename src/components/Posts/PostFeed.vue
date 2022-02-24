@@ -19,19 +19,10 @@ export default {
   components: { Post },
 };
 </script>
-
-  <!-- <el-scrollbar>
-    <div class="scrollbar-flex-content">
-      <p v-for="photo in photoData" :key="photo.id" class="scrollbar-demo-item">
-        <PhotoItem :title="photo.title" :imageSrc="photo.thumbnailUrl" />
-      </p>
-    </div>
-  </el-scrollbar> -->
-
 <template>
   <el-scrollbar height="40em">
     <p v-for="post in postData" :key="post.id" class="scrollbar-demo-item">
-        <Post :title="post.title" :body="post.body" />
+        <Post :title="post.title" :body="post.body" :id="post.id" :userId="post.userId" />
     </p>
   </el-scrollbar>
 </template>

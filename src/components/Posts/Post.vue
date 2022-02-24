@@ -1,32 +1,46 @@
 <script setup>
-import { Delete, View } from "@element-plus/icons-vue";
+import { Delete, View } from "@element-plus/icons-vue"
+import { inject } from "@vue/runtime-core";
 
-defineProps({
+const props = defineProps({
     userId: Number,
-    Id: Number,
+    id: Number,
     title: String,
     body: String,
 });
+
+const apiUrl = inject('JSON_PLACEHOLDER_API')
+
+async function deletePost() {
+    console.log('props', props.id);
+    const url = `${apiUrl}/posts/`;
+    const response = await fetch(url + props.id, {
+        method: 'DELETE',
+    }).then(() => alert(`Delete would have been a success for post Id: ${props.id}`))
+}
 </script>
 
 <template>
     <el-card class="box-card">
         <template #header>
             <div class="card-header">
-                <span>{{ title }}</span>
+                <span>{{ props.title }}</span>
             </div>
         </template>
-        <div class="text item">{{ body }}</div>
-        <el-button type="danger">
+        <div class="text item">{{ props.body }}</div>
+        <el-button @click="deletePost" type="danger">
             <el-icon>
                 <Delete />
             </el-icon>
             <span style="vertical-align: middle">Delete</span>
         </el-button>
-        <el-button type="primary">
-            <el-icon><View /></el-icon>
+        <router-link :to="`/path/${props.id}`"><el-button type="primary">
+            <el-icon>
+                <View />
+            </el-icon>
             <span style="vertical-align: middle">View More</span>
-        </el-button>
+        </el-button></router-link>
+
     </el-card>
 </template>
 
