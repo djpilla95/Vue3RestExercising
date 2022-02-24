@@ -1,5 +1,5 @@
 <script setup>
-import PhotoViewer from "./components/PhotoViewer.vue";
+import PostFeed from "./components/Posts/PostFeed.vue";
 </script>
 
 <template>
@@ -11,6 +11,11 @@ import PhotoViewer from "./components/PhotoViewer.vue";
   </header>
 
   <main>
-    <PhotoViewer />
+    <!-- <PhotoViewer /> -->
+    <el-row :gutter="20" justify="center">
+      <el-col :span="12">
+        <PostFeed />
+      </el-col>
+    </el-row>
   </main>
 </template>
