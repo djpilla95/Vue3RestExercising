@@ -2,12 +2,12 @@
 import Post from "./Post.vue";
 import { onMounted, inject, ref } from "vue";
 
-const postData = ref(null)
-const API_URL = inject("JSON_PLACEHOLDER_API")
+const postData = ref(null);
+const API_URL = inject("JSON_PLACEHOLDER_API");
 
 onMounted(async () => {
-  if(!postData.value) {
-    await fetchPostData()
+  if (!postData.value) {
+    await fetchPostData();
   }
 });
 
@@ -17,16 +17,18 @@ async function fetchPostData() {
 }
 </script>
 <template>
-  <el-scrollbar height="40em">
-    <p v-for="post in postData" :key="post.id" class="scrollbar-demo-item">
+  <!-- <el-scrollbar height="40em"> -->
+  <p v-for="post in postData" :key="post.id">
+    <el-col>
       <Post
         :title="post.title"
         :body="post.body"
         :id="post.id"
         :userId="post.userId"
       />
-    </p>
-  </el-scrollbar>
+    </el-col>
+  </p>
+  <!-- </el-scrollbar> -->
 </template>
 
 <style scoped>

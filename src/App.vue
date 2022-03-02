@@ -9,10 +9,8 @@ import PostFeed from "./components/Posts/PostFeed.vue";
 
   <main>
     <!-- <PhotoViewer /> -->
-    <el-row :gutter="20" justify="center">
-      <el-col :span="12">
-        <PostFeed />
-      </el-col>
+    <el-row :gutter="20">
+      <PostFeed />
     </el-row>
   </main>
 </template>
